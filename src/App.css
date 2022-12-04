@@ -1,10 +1,16 @@
 * {
-  font-family: 'Nunito', sans-serif;
-  /* font-family: 'Poppins', sans-serif; */
+    font-family: "Nunito", sans-serif;
+    /* font-family: 'Poppins', sans-serif; */
 }
 
 .bgImg {
-  background: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('./assets/bg_image.jpg');
-  background-position: center;
-  background-size: contain;
+    background: linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.5)
+        ),
+        url("./assets/bg_image.jpg");
+    background-position: center;
+    background-size: contain;
+    overflow: auto;
 }
