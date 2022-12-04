@@ -1,25 +1,64 @@
-import logo from './logo.svg';
 import './App.css';
+import Login from './pages/Login';
+import Register from './pages/register';
+import { BrowserRouter as Router, Navigate, Route, Routes, useLocation } from "react-router-dom";
+import { useSelector } from 'react-redux';
+import { useLoadingWithRefresh } from './hooks/useLoadingWithRefresh';
+import Home from './pages/Home';
 
 function App() {
+  const { loading } = useLoadingWithRefresh();
+  const { user } = useSelector(state => state.auth) || {};
+  console.log(user);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    loading ? <h1>Loading...</h1> : (
+    <Router>
+      <Routes>
+        <Route exact path="/register" element={<GuestRoute>
+          <Register />
+        </GuestRoute>} />
+        <Route exact path="/login" element={<GuestRoute>
+          <Login />
+        </GuestRoute>} />
+        <Route exact path="/" element={<ProtectedRoute>
+          <Home />
+        </ProtectedRoute>} />
+      </Routes>
+    </Router>
+    )
+  )
+}
+
+
+const GuestRoute = ({ children }) => {
+  const location = useLocation();
+  const { isAuth } = useSelector(state => state.auth);
+
+  return isAuth ? <Navigate replace to={
+    {
+      pathname: '/',
+      state: { from: location },
+    }
+  } /> : children
+}
+
+const PublicRoute = ({ children }) => {
+  const location = useLocation();
+  const { isAuth } = useSelector(state => state.auth);
+
+  return children
+}
+
+const ProtectedRoute = ({ children }) => {
+  const location = useLocation();
+  const { isAuth } = useSelector(state => state.auth);
+  return !isAuth ? <Navigate replace to={
+    {
+      pathname: '/login',
+      state: { from: location },
+    }
+  } /> : children
 }
 
 export default App;
