@@ -1,36 +1,46 @@
-import axios from "axios";
-import { useMutation, useQuery } from "react-query";
-import { useNavigate } from "react-router-dom";
-import api from "../../http";
+import axios from 'axios';
+import { useMutation, useQuery } from 'react-query';
+import { useNavigate } from 'react-router-dom';
+import api from '../../http';
 
 const COMPLAINT_TYPES = {
-  NCR: "ncr",
-  FIR: "fir",
-  DISCARDED: "discarded",
+  NCR: 'ncr',
+  FIR: 'fir',
+  DISCARDED: 'discarded',
 };
 
 const createComplaintAPI = (data) => {
   return api({
     headers: {
-      "Content-Type": "multipart/form-data",
+      'Content-Type': 'multipart/form-data',
     },
-    method: "post",
-    url: "/customer/complaint",
+    method: 'post',
+    url: '/customer/complaint',
     data: data,
   });
 };
 
 const useCustomerComplaints = () => {
-  const { mutate: createComplaint, isLoading: createComplaintLoading } =
-    useMutation(createComplaintAPI, {
+  const { mutate: createComplaint, isLoading: createComplaintLoading } = useMutation(
+    createComplaintAPI,
+    {
       onSuccess: () => {
-        alert("Complaint Saved");
+        alert('Complaint Saved');
       },
-    });
+    }
+  );
   return {
     createComplaint,
     createComplaintLoading,
   };
+};
+
+const getCustomerComplaints = () => {
+  return axios.get('/customer/complaints');
+};
+
+export const useCustomerComplaintsList = () => {
+  return useQuery('complaints', getCustomerComplaints);
 };
 
 export default useCustomerComplaints;

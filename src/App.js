@@ -1,26 +1,20 @@
-import "./App.css";
-import Login from "./pages/Login";
-import Register from "./pages/register";
-import {
-    BrowserRouter as Router,
-    Navigate,
-    Route,
-    Routes,
-    useLocation,
-} from "react-router-dom";
-import { useSelector } from "react-redux";
-import { useLoadingWithRefresh } from "./hooks/useLoadingWithRefresh";
+import './App.css';
+import Login from './pages/Login';
+import Register from './pages/register';
+import { BrowserRouter as Router, Navigate, Route, Routes, useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useLoadingWithRefresh } from './hooks/useLoadingWithRefresh';
 
-import Home from "./pages/Home";
-import OfficerLogin from "./pages/Officer/OfficerLogin";
+import Home from './pages/Home';
+import OfficerLogin from './pages/Officer/OfficerLogin';
 
-import FileComplaint from "./pages/FileComplaint";
-import CustomerDashboard from "./pages/Customer/CustomerDashboard";
+import FileComplaint from './pages/FileComplaint';
+import CustomerDashboard from './pages/Customer/CustomerDashboard';
 
 function App() {
-    const { loading } = useLoadingWithRefresh();
-    const { user } = useSelector((state) => state.auth) || {};
-    console.log(user);
+  const { loading } = useLoadingWithRefresh();
+  const { user } = useSelector((state) => state.auth) || {};
+  console.log(user);
 
   return loading ? (
     <h1>Loading...</h1>
@@ -44,7 +38,11 @@ function App() {
             </GuestRoute>
           }
         />
-        <Route path="complaint/new" exact element={<FileComplaint />} />
+        <Route
+          path="complaint/new"
+          exact
+          element={<FileComplaint />}
+        />
         <Route
           path="officer/login"
           element={
@@ -54,7 +52,11 @@ function App() {
           }
         />
 
-        <Route exact path="/" element={<HomeComp />} />
+        <Route
+          exact
+          path="/"
+          element={<HomeComp />}
+        />
       </Routes>
     </Router>
   );
@@ -79,20 +81,20 @@ const HomeComp = () => {
 };
 
 const GuestRoute = ({ children }) => {
-    const location = useLocation();
-    const { isAuth } = useSelector((state) => state.auth);
+  const location = useLocation();
+  const { isAuth } = useSelector((state) => state.auth);
 
-    return isAuth ? (
-        <Navigate
-            replace
-            to={{
-                pathname: "/",
-                state: { from: location },
-            }}
-        />
-    ) : (
-        children
-    );
+  return isAuth ? (
+    <Navigate
+      replace
+      to={{
+        pathname: '/',
+        state: { from: location },
+      }}
+    />
+  ) : (
+    children
+  );
 };
 
 const PublicRoute = ({ children }) => {
@@ -103,44 +105,13 @@ const PublicRoute = ({ children }) => {
 };
 
 const ProtectedRoute = ({ children }) => {
-    const location = useLocation();
-    const { isAuth } = useSelector((state) => state.auth);
-    return !isAuth ? (
-        <Navigate
-            replace
-            to={{
-                pathname: "/login",
-                state: { from: location },
-            }}
-        />
-    ) : (
-        children
-    );
-};
-
-=======
-  const { isAuth } = useSelector((state) => state.auth);
-
-  return isAuth ? (
-    <Navigate
-      replace
-      to={{
-        pathname: "/",
-      }}
-    />
-  ) : (
-    children
-  );
-};
-
-const ProtectedRoute = ({ children }) => {
   const location = useLocation();
   const { isAuth } = useSelector((state) => state.auth);
   return !isAuth ? (
     <Navigate
       replace
       to={{
-        pathname: "/",
+        pathname: '/',
         state: { from: location },
       }}
     />
@@ -149,5 +120,4 @@ const ProtectedRoute = ({ children }) => {
   );
 };
 
->>>>>>> 05c96a7 (add: officer view login)
 export default App;
