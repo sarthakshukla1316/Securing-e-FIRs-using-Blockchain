@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const ViewComplaints = () => {
   return (
@@ -6,13 +7,16 @@ const ViewComplaints = () => {
       <div className="sidebar w-1/5">
         <ul>
           <li>
-            <a>View Discarded Complaints</a>
+            <button>View all complaints</button>
           </li>
           <li>
-            <a href="">View all complaints</a>
+            <button>Complaints with F.I.R.</button>
           </li>
           <li>
-            <a href="">Complaints with F.I.R.</a>
+            <button>Complaints with N.C.R.</button>
+          </li>
+          <li>
+            <button>View Discarded Complaints</button>
           </li>
         </ul>
       </div>

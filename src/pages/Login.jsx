@@ -84,7 +84,7 @@ const Login = () => {
                   <p class="text-lg text-[#aca9a9] font-semibold mt-4 mb-3 pt-1">
                     Don't have an account?
                     <Link
-                      to="/register"
+                      to="/customer/register"
                       class="text-[#174793] pl-2 hover:text-red-700 focus:text-red-700 transition duration-200 ease-in-out"
                     >
                       Sign Up
