@@ -7,6 +7,7 @@ import { useLoadingWithRefresh } from './hooks/useLoadingWithRefresh';
 
 import Home from './pages/Home';
 import OfficerLogin from './pages/Officer/OfficerLogin';
+import FileFIR from './pages/Officer/FileFIR';
 
 import FileComplaint from './pages/FileComplaint';
 import CustomerDashboard from './pages/Customer/CustomerDashboard';
@@ -56,6 +57,10 @@ function App() {
           exact
           path="/"
           element={<HomeComp />}
+        />
+        <Route
+          path="/complaint"
+          element={<FileFIR />}
         />
       </Routes>
     </Router>

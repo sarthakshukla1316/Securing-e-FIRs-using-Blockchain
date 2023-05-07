@@ -1,7 +1,7 @@
-import axios from "axios";
+import axios from 'axios';
 
 const api = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: 'http://localhost:5000',
   withCredentials: true,
   // headers: {
   //     'Content-type': 'application/json',
@@ -10,13 +10,13 @@ const api = axios.create({
 });
 
 // Authentication
-export const sendOtp = (data) => api.post("/api/send-otp", data);
+export const sendOtp = (data) => api.post('/api/send-otp', data);
 
-export const verifyOtp = (data) => api.post("/api/verify-otp", data);
+export const verifyOtp = (data) => api.post('/api/verify-otp', data);
 
-export const login = (data) => api.post("/api/login", data);
+export const login = (data) => api.post('/api/login', data);
 
-export const logout = () => api.post("/api/logout");
+export const logout = () => api.post('/api/logout');
 
 // export const logout = () => api.post('/api/logout');
 
@@ -27,15 +27,11 @@ api.interceptors.response.use(
   },
   async (error) => {
     const originalRequest = error.config;
-    if (
-      error.response.status === 401 &&
-      originalRequest &&
-      !originalRequest._isRetry
-    ) {
+    if (error.response.status === 401 && originalRequest && !originalRequest._isRetry) {
       originalRequest._isRetry = true;
 
       try {
-        await axios.get("http:/localhost:5000/api/refresh", {
+        await axios.get('/api/refresh', {
           withCredentials: true,
         });
 

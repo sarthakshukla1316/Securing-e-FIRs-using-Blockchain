@@ -7,6 +7,8 @@ import { removeAuth } from '../../store/authSlice';
 import { logout } from '../../http';
 import CustomerComplaintsList from './Complaints/CustomerComplaintsList';
 
+import { useGetComplaint } from '../../api/customer/useCustomerComplaint';
+
 const CustomerDashboard = () => {
   const user = useSelector((state) => state.auth.user);
 

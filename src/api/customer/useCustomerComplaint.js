@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useMutation, useQuery } from 'react-query';
+import { useMutation, useQuery, useQueryClient } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 import api from '../../http';
 
@@ -9,23 +9,24 @@ const COMPLAINT_TYPES = {
   DISCARDED: 'discarded',
 };
 
-const createComplaintAPI = (data) => {
+const postComplaintAPI = (data) => {
   return api({
-    headers: {
-      'Content-Type': 'multipart/form-data',
-    },
     method: 'post',
-    url: '/customer/complaint',
+    url: '/complaint',
     data: data,
   });
 };
 
-const useCustomerComplaints = () => {
+const usePostComplaint = () => {
+  const queryClient = useQueryClient('customer-complaints');
+
   const { mutate: createComplaint, isLoading: createComplaintLoading } = useMutation(
-    createComplaintAPI,
+    postComplaintAPI,
     {
-      onSuccess: () => {
-        alert('Complaint Saved');
+      onSuccess: (newComplaint) => {
+        queryClient.setQueryData('customer-complaints', (oldQueryData) => {
+          return { ...oldQueryData, data: [...oldQueryData.data, newComplaint.data.data] };
+        });
       },
     }
   );
@@ -36,11 +37,11 @@ const useCustomerComplaints = () => {
 };
 
 const getCustomerComplaints = () => {
-  return axios.get('/customer/complaints');
+  return api.get('/customer/complaints');
 };
 
-export const useCustomerComplaintsList = () => {
-  return useQuery('complaints', getCustomerComplaints);
+const useGetComplaint = () => {
+  return useQuery('customer-complaints', getCustomerComplaints);
 };
 
-export default useCustomerComplaints;
+export { useGetComplaint, usePostComplaint };

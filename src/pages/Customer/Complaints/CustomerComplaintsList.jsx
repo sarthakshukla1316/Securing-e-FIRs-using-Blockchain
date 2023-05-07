@@ -1,9 +1,9 @@
 import React from 'react';
 import ComplaintCard from './ComplaintCard';
-import { useCustomerComplaintsList } from '../../../api/customer/useCustomerComplaint';
+import { useGetComplaint } from '../../../api/customer/useCustomerComplaint';
 
 const CustomerComplaintsList = () => {
-  const { data, isLoading, isError } = useCustomerComplaintsList();
+  const { data: complaintsList, isLoading, isFetching, isError } = useGetComplaint();
 
   return (
     <div className="w-full min-h-[20vh] px-4 py-2 pt-4 ">
@@ -11,8 +11,12 @@ const CustomerComplaintsList = () => {
       <div
         id="complaintsContainer "
         className="grid grid-cols-2 gap-4">
-        <ComplaintCard />
-        <ComplaintCard />
+        {complaintsList?.data?.map((complaintData, id) => {
+          <ComplaintCard
+            complaintData={complaintData}
+            key={id}
+          />;
+        })}
       </div>
     </div>
   );
