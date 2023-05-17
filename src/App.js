@@ -3,14 +3,17 @@ import Login from './pages/Login';
 import Register from './pages/register';
 import { BrowserRouter as Router, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+
 import { useLoadingWithRefresh } from './hooks/useLoadingWithRefresh';
 
 import Home from './pages/Home';
 import OfficerLogin from './pages/Officer/OfficerLogin';
 import FileFIR from './pages/Officer/FileFIR';
 
-import FileComplaint from './pages/FileComplaint';
+import { ToastContainer } from 'react-toastify';
+// import FileComplaint from './pages/FileComplaint';
 import CustomerDashboard from './pages/Customer/CustomerDashboard';
+import FileComplaint from './pages/FileComplaint';
 
 function App() {
   const { loading } = useLoadingWithRefresh();
@@ -39,11 +42,7 @@ function App() {
             </GuestRoute>
           }
         />
-        <Route
-          path="complaint/new"
-          exact
-          element={<FileComplaint />}
-        />
+
         <Route
           path="officer/login"
           element={
@@ -59,8 +58,13 @@ function App() {
           element={<HomeComp />}
         />
         <Route
-          path="/complaint"
-          element={<FileFIR />}
+          path="/complaint/new"
+          element={
+            <ProtectedRoute>
+              <ToastContainer />
+              <FileComplaint />
+            </ProtectedRoute>
+          }
         />
       </Routes>
     </Router>
