@@ -59,7 +59,7 @@ function App() {
                     }
                 />
                 <Route
-                    path="/FIR/:aadhar"
+                    path="/FIR/:aadhar/:id"
                     element={
                         <>
                             <ToastContainer />
@@ -79,7 +79,7 @@ function App() {
                     }
                 />
                 <Route
-                    path="/complaint/status/:aadhar"
+                    path="/complaint/status/:aadhar/:id"
                     element={
                         <>
                             <ToastContainer />

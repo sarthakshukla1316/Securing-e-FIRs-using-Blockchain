@@ -1,8 +1,17 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
-const ComplaintCard = ({ complaintData }) => {
+const ComplaintCard = ({ complaintData, index }) => {
+    const navigate = useNavigate();
+
+    const redirect = () => {
+        navigate(`/complaint/status/${complaintData.aadhar}/${index}`);
+    };
     return (
-        <div className="w-full px-6 py-4 rounded flex flex-col gap-4 bg-gray-700 my-8 text-white shadow-md  transition-transform">
+        <div
+            onClick={redirect}
+            className="w-full px-6 py-4 rounded flex flex-col gap-4 bg-gray-700 my-8 text-white shadow-md  transition-transform"
+        >
             <div className="header flex justify-between">
                 <p className="text-sm">
                     <strong className="text-yellow-400 font-title">
@@ -16,7 +25,7 @@ const ComplaintCard = ({ complaintData }) => {
                     <strong className="text-yellow-400 font-title">Date</strong>{" "}
                     :{" "}
                     <span className=" font-content">
-                        {complaintData.date || "Sat May 20 2023"}{" "}
+                        {complaintData.date || new Date().toDateString()}{" "}
                     </span>
                 </p>
             </div>

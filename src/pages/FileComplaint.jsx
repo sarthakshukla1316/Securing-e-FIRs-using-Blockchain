@@ -105,54 +105,54 @@ const FileComplaint = () => {
                         </div>
                     </button>
                     <div className="flex flex-col flex-grow font-title  min-w-[500px]  p-4 overflow-auto">
-                        <a
+                        {/* <a
                             className="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-gray-300"
                             href="#"
                         >
                             <span className="leading-none font-title">
                                 Item 1
                             </span>
-                        </a>
-                        <a
+                        </a> */}
+                        {/* <a
                             className="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-gray-300"
                             href="#"
                         >
                             <span className="leading-none font-title">
                                 Item 2
                             </span>
-                        </a>
-                        <a
+                        </a> */}
+                        {/* <a
                             className="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-gray-300"
                             href="#"
                         >
                             <span className="leading-none font-title">
                                 Item 3
                             </span>
-                        </a>
-                        <a
+                        </a> */}
+                        {/* <a
                             className="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-gray-300"
                             href="#"
                         >
                             <span className="leading-none font-title">
                                 Item 4
                             </span>
-                        </a>
-                        <a
+                        </a> */}
+                        {/* <a
                             className="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-gray-300"
                             href="#"
                         >
                             <span className="leading-none font-title">
                                 Item 5
                             </span>
-                        </a>
-                        <a
+                        </a> */}
+                        {/* <a
                             className="flex items-center flex-shrink-0 h-10 px-2 text-sm font-medium rounded hover:bg-gray-300"
                             href="#"
                         >
                             <span className="leading-none font-title">
                                 Item 6
                             </span>
-                        </a>
+                        </a> */}
                         <a
                             className="flex items-center flex-shrink-0 h-10 px-3 mt-auto text-sm font-medium bg-gray-200 rounded hover:bg-gray-300"
                             href="#"
