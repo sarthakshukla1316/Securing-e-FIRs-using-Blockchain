@@ -1,22 +1,25 @@
-import React from "react";
+import React from 'react';
 
-import Carousel1 from "../assets/carousel-1.jpg";
-import Carousel2 from "../assets/carousel-2.jpg";
-import Carousel3 from "../assets/carousel-3.jpg";
-import { Carousel } from "react-responsive-carousel";
-import { Link } from "react-router-dom";
+import Carousel1 from '../assets/carousel-1.jpg';
+import Carousel2 from '../assets/carousel-2.jpg';
+import Carousel3 from '../assets/carousel-3.jpg';
+import { Carousel } from 'react-responsive-carousel';
+import { Link } from 'react-router-dom';
 
-import NavImageLogo from "../assets/noida-profile-small.jpg";
+import NavImageLogo from '../assets/noida-profile-small.jpg';
 
 const Home = () => {
   return (
     <div>
-      <nav className="navbar bg-white w-full max-h-40 py-2 px-20 flex justify-between">
-        <div className="brand text-2xl items-center flex gap-2 ">
-          <img src={NavImageLogo} className="h-8 " />
+      <nav className="flex justify-between w-full px-20 py-2 bg-white navbar max-h-40">
+        <div className="flex items-center gap-2 text-2xl brand ">
+          <img
+            src={NavImageLogo}
+            className="h-8 "
+          />
           <h2 className="font-bold text-blue-800">Noida Police</h2>
         </div>
-        <ul className="flex  justify-evenly  ">
+        <ul className="flex justify-evenly ">
           <li className="text-blue-600 hover:bg-[#16325d] hover:shadow-lg hover:text-white py-2 cursor-pointer px-4">
             Citizen Services
           </li>
@@ -44,17 +47,41 @@ const Home = () => {
             // renderArrowNext={() => null}
           >
             <div className="relative">
-              {/* <div className="absolute text-2xl w-full h-full text-white bg-gradient-to-r from-slate-400 to-gray-50top-[50%] left-10">
-                <div className="absolute">Your complaints are secured</div>
-              </div> */}
-              <img src={Carousel1} className="" />
+              <div className="absolute w-full h-screen  bg-gradient-to-r from-[rgba(23,21,21,0.9164915966386554)] 20% via-[rgba(42,42,42,0.8744747899159664)] 57% to-[rgba(255,255,253,0.11257002801120453)] 100% flex items-center tracking-wide select-none">
+                <p className="my-auto ml-4 font-semibold leading-normal text-left text-white select-none text-8xl font-title lg:w-1/2">
+                  Secure your FIR using{' '}
+                  <span className="font-bold text-purple-900 font-title ">Blockchain</span>
+                </p>
+              </div>
+              <img
+                src={Carousel1}
+                className="object-cover h-screen"
+              />
             </div>
-            <div>
-              <img src={Carousel2} className="" />
+            <div className="relative">
+              <div className="absolute w-full h-screen  bg-gradient-to-r from-[rgba(23,21,21,0.9164915966386554)] 20% via-[rgba(42,42,42,0.8744747899159664)] 57% to-[rgba(255,255,253,0.11257002801120453)] 100% flex items-center tracking-wide select-none">
+                <p className="my-auto ml-4 font-semibold leading-normal text-left text-white select-none text-8xl font-title lg:w-1/2">
+                  Secure your FIR using{' '}
+                  <span className="font-bold text-purple-900 font-title ">Blockchain</span>
+                </p>
+              </div>
+              <img
+                src={Carousel2}
+                className="object-cover h-screen"
+              />
               {/* <p className="legend">Legend 1</p> */}
             </div>
-            <div>
-              <img src={Carousel3} className="" />
+            <div className="relative">
+              <div className="absolute w-full h-screen  bg-gradient-to-r from-[rgba(23,21,21,0.9164915966386554)] 20% via-[rgba(42,42,42,0.8744747899159664)] 57% to-[rgba(255,255,253,0.11257002801120453)] 100% flex items-center tracking-wide select-none">
+                <p className="my-auto ml-4 font-semibold leading-normal text-left text-white select-none text-8xl font-title lg:w-1/2">
+                  Secure your FIR using{' '}
+                  <span className="font-bold text-purple-900 font-title ">Blockchain</span>
+                </p>
+              </div>
+              <img
+                src={Carousel3}
+                className="object-cover h-screen"
+              />
               {/* <p className="legend">Legend 1</p> */}
             </div>
           </Carousel>
