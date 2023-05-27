@@ -18,7 +18,7 @@ const ComplaintStatus = () => {
         }
     };
 
-    const { aadhar } = useParams();
+    const { aadhar, id } = useParams();
     const initialState = {
         id: 133333,
         aadhar,
@@ -36,7 +36,7 @@ const ComplaintStatus = () => {
     const fetch = () => {
         axios
             .get(
-                `http://localhost:5000/api/customer/complaints/${aadhar}/133333`
+                `http://localhost:5000/api/customer/complaints/${aadhar}/${id}`
             )
             .then((response) => {
                 const complaintDocument = response.data[8];

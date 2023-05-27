@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 const FileFIR = () => {
-    const { aadhar } = useParams();
+    const { aadhar, id } = useParams();
     const initialState = {
         id: null,
         aadhar: null,
@@ -24,19 +24,21 @@ const FileFIR = () => {
     const [success, setSuccess] = useState(null);
 
     const handleIsValid = (value, name) => {
+        console.log(value, name);
         const newComp = complaint;
-        newComp.name = value;
+        newComp[name] = value;
         newComp.reason = value ? "" : complaint.reason;
         if (name === "isValid" && !value) {
             newComp.firFiled = false;
         }
-        setComplaint(newComp);
+        setComplaint({ ...newComp });
     };
+    console.log(complaint);
 
     const fetch = () => {
         axios
             .get(
-                `http://localhost:5000/api/customer/complaints/${aadhar}/133333`
+                `http://localhost:5000/api/customer/complaints/${aadhar}/${id}`
             )
             .then((response) => {
                 const complaintDocument = response.data[8];
@@ -77,6 +79,7 @@ const FileFIR = () => {
         axios
             .post("http://localhost:5000/api/customer/updateFIRDocument", {
                 aadhar,
+                id,
                 complaintDocument: complaint,
             })
             .then(() => {
@@ -219,7 +222,8 @@ const FileFIR = () => {
                                                 value={false}
                                                 onChange={handleForm}
                                                 defaultChecked={
-                                                    !complaint.isCognizible
+                                                    complaint.isCognizible ===
+                                                    false
                                                 }
                                                 disabled={filed}
                                             />
@@ -238,7 +242,7 @@ const FileFIR = () => {
                                                 className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                                 htmlFor="grid-last-name"
                                             >
-                                                Reason htmlFor complaint being
+                                                Reason For complaint being
                                                 incognizible
                                             </label>
                                             <textarea
