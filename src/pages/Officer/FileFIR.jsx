@@ -32,6 +32,7 @@ const FileFIR = () => {
   const handleIsValid = (value, name) => {
     if (filed) {
       toast.error('FIR has been filed, cannot change status now');
+      return;
     }
     const newComp = complaint;
     newComp[name] = value;
@@ -116,7 +117,7 @@ const FileFIR = () => {
 
   const hanldeFieldClick = () => {
     if (filed) {
-      toast.error('FIR has been filed, cannot change status now');
+      // toast.error('FIR has been filed, cannot change status now');
     }
   };
 
@@ -217,8 +218,8 @@ const FileFIR = () => {
                             id="grid-last-name"
                             type={'checkbox'}
                             maxLength="6"
-                            defaultChecked={complaint.isValid}
-                            disabled={filed}
+                            checked={complaint.isValid}
+                            // disabled={filed}
                             onChange={(event) => handleIsValid(event.target.checked, 'isValid')}
                             onClick={hanldeFieldClick}
                           />
@@ -266,8 +267,8 @@ const FileFIR = () => {
                                 name={'isCognizible'}
                                 value={true}
                                 onChange={handleForm}
-                                defaultChecked={complaint.isCognizible}
-                                disabled={filed}
+                                checked={complaint.isCognizible}
+                                // disabled={filed}
                                 onClick={hanldeFieldClick}
                               />
                               <label
@@ -284,8 +285,8 @@ const FileFIR = () => {
                                 name={'isCognizible'}
                                 value={false}
                                 onChange={handleForm}
-                                defaultChecked={complaint.isCognizible === false}
-                                disabled={filed}
+                                checked={complaint.isCognizible === false}
+                                // disabled={filed}
                                 onClick={hanldeFieldClick}
                               />
                               <label
@@ -327,8 +328,8 @@ const FileFIR = () => {
                                     onChange={(event) =>
                                       handleIsValid(event.target.checked, 'firFiled')
                                     }
-                                    disabled={filed}
-                                    defaultChecked={complaint.firFiled}
+                                    // disabled={filed}
+                                    checked={complaint.firFiled}
                                     onClick={hanldeFieldClick}
                                   />
                                   <label
