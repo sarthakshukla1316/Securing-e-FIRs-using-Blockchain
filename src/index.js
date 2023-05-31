@@ -6,7 +6,7 @@ import { store } from './store';
 import { Provider } from 'react-redux';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { QueryClient, QueryClientProvider } from 'react-query';
-// import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 const queryClient = new QueryClient();
 

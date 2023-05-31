@@ -41,6 +41,9 @@ const Home = () => {
         <div className="h-56 max-h-[600px] sm:h-64 xl:h-80 2xl:h-96">
           <Carousel
             autoPlay={true}
+            autoFocus={true}
+            interval={2000}
+            showStatus={false}
             renderThumbs={() => null}
             showIndicators={false}
             // renderArrowPrev={() => null}
@@ -48,7 +51,7 @@ const Home = () => {
           >
             <div className="relative">
               <div className="absolute w-full h-screen  bg-gradient-to-r from-[rgba(23,21,21,0.9164915966386554)] 20% via-[rgba(42,42,42,0.8744747899159664)] 57% to-[rgba(255,255,253,0.11257002801120453)] 100% flex items-center tracking-wide select-none">
-                <p className="my-auto ml-4 font-semibold leading-normal text-left text-white select-none text-8xl font-title lg:w-1/2">
+                <p className="my-auto ml-20 font-semibold leading-normal text-left text-white select-none text-8xl font-title lg:w-1/2">
                   Secure your FIR using{' '}
                   <span className="font-bold text-purple-900 font-title ">Blockchain</span>
                 </p>
@@ -60,9 +63,9 @@ const Home = () => {
             </div>
             <div className="relative">
               <div className="absolute w-full h-screen  bg-gradient-to-r from-[rgba(23,21,21,0.9164915966386554)] 20% via-[rgba(42,42,42,0.8744747899159664)] 57% to-[rgba(255,255,253,0.11257002801120453)] 100% flex items-center tracking-wide select-none">
-                <p className="my-auto ml-4 font-semibold leading-normal text-left text-white select-none text-8xl font-title lg:w-1/2">
-                  Secure your FIR using{' '}
-                  <span className="font-bold text-purple-900 font-title ">Blockchain</span>
+                <p className="my-auto ml-20 font-semibold leading-normal text-left text-white select-none text-8xl font-title lg:w-1/2">
+                  Complete transparency <br />
+                  with <span className="font-bold text-purple-900 font-title ">Blockchain</span>
                 </p>
               </div>
               <img
@@ -73,7 +76,7 @@ const Home = () => {
             </div>
             <div className="relative">
               <div className="absolute w-full h-screen  bg-gradient-to-r from-[rgba(23,21,21,0.9164915966386554)] 20% via-[rgba(42,42,42,0.8744747899159664)] 57% to-[rgba(255,255,253,0.11257002801120453)] 100% flex items-center tracking-wide select-none">
-                <p className="my-auto ml-4 font-semibold leading-normal text-left text-white select-none text-8xl font-title lg:w-1/2">
+                <p className="my-auto ml-20 font-semibold leading-normal text-left text-white select-none text-8xl font-title lg:w-1/2">
                   Secure your FIR using{' '}
                   <span className="font-bold text-purple-900 font-title ">Blockchain</span>
                 </p>
